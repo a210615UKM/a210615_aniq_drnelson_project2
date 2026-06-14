@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "726021302314",
+    "project_id": "humanity-app-d3cf7",
+    "storage_bucket": "humanity-app-d3cf7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726021302314:android:dc9a0aaedff826c3b63b53",
+        "android_client_info": {
+          "package_name": "com.example.a210615_aniq_drnelson_project2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEXU5fkcSojLL_alaadiz7Zmk3w-P9-gA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
