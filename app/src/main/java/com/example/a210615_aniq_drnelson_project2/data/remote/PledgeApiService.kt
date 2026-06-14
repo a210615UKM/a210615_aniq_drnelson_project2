@@ -17,7 +17,7 @@ class PledgeApiService {
         .build()
 
     private val baseUrl = "https://api-staging.pledge.to/v1"
-    private val apiKey = "6f04a4252b4403f18b119fafb144d092"
+    private val apiKey = "YOUR_PLEDGE_API_KEY_HERE"
 
     suspend fun getCampaigns(): Result<List<Campaign>> = withContext(Dispatchers.IO) {
         try {
