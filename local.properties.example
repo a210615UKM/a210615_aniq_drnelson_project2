@@ -1,0 +1,29 @@
+## ============================================================
+## local.properties — TEMPLATE / EXAMPLE FILE
+## ============================================================
+## INSTRUCTIONS:
+##  1. Copy this file and rename the copy to:   local.properties
+##  2. Fill in your own Android SDK path and Google Maps API key.
+##  3. NEVER commit your real local.properties — it is in .gitignore.
+##
+## This file is read by app/build.gradle.kts at build time.
+## The MAPS_API_KEY value is injected into AndroidManifest.xml as
+## a manifest placeholder (${MAPS_API_KEY}) and used by:
+##   - Google Maps SDK for Android (map rendering)
+##   - Google Places SDK (location search, autocomplete, place photos)
+##   - Geocoding API (reverse geocoding place names)
+## ============================================================
+
+# 1) Path to your Android SDK on your machine.
+#    Windows example:  C\:\\Users\\YourName\\AppData\\Local\\Android\\Sdk
+#    macOS example:    /Users/yourname/Library/Android/sdk
+#    Linux example:    /home/yourname/Android/Sdk
+sdk.dir=C\:\\Users\\YourName\\AppData\\Local\\Android\\Sdk
+
+# 2) Your Google Maps / Places / Geocoding API key.
+#    Get one at: https://console.cloud.google.com/apis/credentials
+#    Make sure these APIs are enabled for the key:
+#       - Maps SDK for Android
+#       - Places API (New)
+#       - Geocoding API
+MAPS_API_KEY=YOUR_GOOGLE_MAPS_API_KEY_HERE
