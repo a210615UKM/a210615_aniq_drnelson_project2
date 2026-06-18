@@ -244,7 +244,7 @@ You can find both keys in your dashboard at [pledge.to](https://www.pledge.to/) 
 - **Where to put it:** In `app/src/main/java/.../screens/donation/PledgeDonationScreen.kt`, replace the value of the `partnerKey` variable:
   ```kotlin
   // PledgeDonationScreen.kt
-  val partnerKey = "Partner_key"   // ← paste your Pledge partner key here
+  val partnerKey = "YOUR_PARTNER_KEY"   // ← paste your Pledge partner key here
   ```
 
 > ⚠️ **Staging vs Production:** This app currently points to Pledge's **staging** environment
