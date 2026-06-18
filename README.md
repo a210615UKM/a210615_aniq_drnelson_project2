@@ -80,7 +80,8 @@ Plus: Jobs, Volunteer, and Edit Profile screens accessible via bottom navigation
 ### 🌐 Live Internet APIs
 | API | Purpose | File |
 |-----|---------|------|
-| **Pledge.to API** | Fetch live list of donation organizations (GET request). | `data/remote/PledgeApiService.kt` |
+| **Pledge.to API** | Fetch live list of donation organizations (GET request). Uses an **API key** (`Bearer` token). | `data/remote/PledgeApiService.kt` |
+| **Pledge.to Widget** | Embedded donation form that processes giving. Uses a **partner key** (`data-partner-key`). | `screens/donation/PledgeDonationScreen.kt` |
 | **Google Maps SDK** | Render the interactive map. | `screens/location/LocationPickerScreen.kt` |
 | **Google Places API** | Autocomplete search + place photos + details. | `screens/location/LocationPickerScreen.kt` |
 | **Geocoding API** | Reverse-geocode coordinates → human-readable location names. | `repository/LocationRepository.kt` |
@@ -222,11 +223,40 @@ The repo includes the project's `app/google-services.json`. If you want to use *
    - **Cloud Firestore** (start in test mode for development)
    - **Realtime Database** (start in test mode for development)
 
-### 6) Get a Pledge.to API key (optional)
-The `PledgeApiService.kt` ships with a demo key. If you want to use your own:
-1. Sign up at [pledge.to](https://www.pledge.to/).
-2. Get an API key from your dashboard.
-3. Replace the `apiKey` constant in `data/remote/PledgeApiService.kt`.
+### 6) Get your Pledge.to keys (optional)
+
+Pledge.to uses **two separate keys** in this app, for two different jobs. Both ship with working demo (staging) values, so the app runs out of the box — but if you want to use your **own** Pledge account, replace them as described below.
+
+You can find both keys in your dashboard at [pledge.to](https://www.pledge.to/) → **Settings / Developers**.
+
+#### a) API Key — used to fetch the live list of NGOs
+- **What it does:** Authenticates the REST API call (`GET /v1/organizations`) that loads the live donation organizations shown on the Donate screen.
+- **How it's sent:** As an HTTP header → `Authorization: Bearer <API_KEY>`.
+- **Where to put it:** In `app/src/main/java/.../data/remote/PledgeApiService.kt`, replace the value of the `apiKey` constant:
+  ```kotlin
+  // PledgeApiService.kt
+  private val apiKey = "YOUR_API_KEY"   // ← paste your Pledge API key here
+  ```
+
+#### b) Partner Key — used by the embedded donation widget
+- **What it does:** Identifies your Pledge account to the embeddable JavaScript donation **widget** (`embed/widget.js`). Required for the widget that actually processes donations.
+- **How it's sent:** As an HTML attribute on the widget → `data-partner-key="<PARTNER_KEY>"`.
+- **Where to put it:** In `app/src/main/java/.../screens/donation/PledgeDonationScreen.kt`, replace the value of the `partnerKey` variable:
+  ```kotlin
+  // PledgeDonationScreen.kt
+  val partnerKey = "Partner_key"   // ← paste your Pledge partner key here
+  ```
+
+> ⚠️ **Staging vs Production:** This app currently points to Pledge's **staging** environment
+> (`api-staging.pledge.to` and `staging.pledge.to`). Staging and production use **different** keys.
+> If you switch to your live production keys, also change the URLs:
+> `api-staging.pledge.to` → `api.pledge.to` (in `PledgeApiService.kt`) and
+> `staging.pledge.to` → `pledge.to` (in `PledgeDonationScreen.kt`).
+
+| Key | Variable | File | Used for |
+|-----|----------|------|----------|
+| **API Key** | `apiKey` | `data/remote/PledgeApiService.kt` | `Bearer` auth on the REST API that fetches the NGO list |
+| **Partner Key** | `partnerKey` | `screens/donation/PledgeDonationScreen.kt` | `data-partner-key` on the embedded donation widget |
 
 ### 7) Sync & Run
 1. Open the project in Android Studio.
