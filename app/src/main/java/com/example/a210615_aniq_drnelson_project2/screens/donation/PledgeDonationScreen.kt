@@ -26,7 +26,7 @@ fun PledgeDonationScreen(
 ) {
     val campaign = viewModel.selectedCampaign
     val ngoId = campaign?.ngoName ?: ""
-    val partnerKey = "a1c348ee2f016a7cf00cbd7fdeece1e2"
+    val partnerKey = "YOUR_PARTNER_KEY"
 
     var isLoading by remember { mutableStateOf(true) }
     var donationCompleted by remember { mutableStateOf(false) }
